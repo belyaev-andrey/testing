@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+
+    <view entity="testing_QuestionAndAnswer" name="questionAndAnswer-view" extends="_local">
+        <property name="question" view="_minimal"/>
+        <property name="answer" view="_minimal"/>
+    </view>
+</views>

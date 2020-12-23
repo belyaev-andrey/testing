@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://questionAndAnswerEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.testing.web.screens.questionandanswer">
+    <data>
+        <instance id="questionAndAnswerDc"
+                  class="com.company.testing.entity.QuestionAndAnswer">
+            <view extends="_local">
+                <property name="question" view="_minimal"/>
+                <property name="answer" view="_minimal"/>
+            </view>
+            <loader/>
+        </instance>
+        <collection id="questionsDc" class="com.company.testing.entity.Question" view="_minimal">
+            <loader id="questionsDl">
+                <query>
+                    <![CDATA[select e from testing_Question e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="answersDc" class="com.company.testing.entity.Answer" view="_minimal">
+            <loader id="answersDl">
+                <query>
+                    <![CDATA[select e from testing_Answer e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="questionAndAnswerDc">
+            <column width="350px">
+                <lookupPickerField id="questionField" optionsContainer="questionsDc" property="question"/>
+                <lookupPickerField id="answerField" optionsContainer="answersDc" property="answer"/>
+                <checkBox id="correctField" property="correct"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

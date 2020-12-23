@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
+    <menu id="application-testing" insertBefore="administration" caption="mainMsg://menu_config.application-testing">
+        <item screen="testing_Question.browse" caption="mainMsg://menu_config.testing_Question.browse"/>
+        <item screen="testing_Answer.browse" caption="mainMsg://menu_config.testing_Answer.browse"/>
+        <item screen="testing_QuestionAndAnswer.browse"
+              caption="mainMsg://menu_config.testing_QuestionAndAnswer.browse"/>
+    </menu>
+</menu-config>

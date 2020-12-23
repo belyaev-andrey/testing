@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://questionAndAnswerBrowse.caption"
+        focusComponent="questionAndAnswersTable"
+        messagesPack="com.company.testing.web.screens.questionandanswer">
+    <data readOnly="true">
+        <collection id="questionAndAnswersDc"
+                    class="com.company.testing.entity.QuestionAndAnswer">
+            <view extends="_local">
+                <property name="question" view="_minimal"/>
+                <property name="answer" view="_minimal"/>
+            </view>
+            <loader id="questionAndAnswersDl">
+                <query>
+                    <![CDATA[select e from testing_QuestionAndAnswer e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="questionAndAnswersTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="questionAndAnswersTable"
+                dataLoader="questionAndAnswersDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="questionAndAnswersTable"
+                    width="100%"
+                    dataContainer="questionAndAnswersDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="question"/>
+                <column id="answer"/>
+                <column id="correct"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="questionAndAnswersTable.create"/>
+                <button id="editBtn" action="questionAndAnswersTable.edit"/>
+                <button id="removeBtn" action="questionAndAnswersTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>
